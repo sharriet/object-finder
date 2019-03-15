@@ -1,7 +1,7 @@
 # Object finding in Python with p5.js
 
 A simple object finder implemented as an insecure API for interfacing with p5.js. 
-Spot objects in the real world and use the location data to make stuff happen on a p5 canvas!
+The point of it? To spot objects in the real world and use the location data to make stuff happen on a p5 canvas!
 
 You'll find both the python API bit and an example p5 sketch that uses it this repo.
 
@@ -12,7 +12,7 @@ The server.py script could be useful for other projects as it serves CGI scripts
 + Clone the repo
 + Activate the virtual environment:
 
-    source bin/activate
+        source bin/activate
 
 ## Setup with live camera feed
 
@@ -23,15 +23,15 @@ The server.py script could be useful for other projects as it serves CGI scripts
   - Do this in a well lit room, avoiding direct light so shadows aren't projected
 + Inside the `cgi-bin` folder, open the python interactive shell and import the object finder functions:
 
-    python
-    from object_finder import *    
+        python
+        from object_finder import *    
 + Run the following command to check the camera is lined up with the canvas (`q` closes the window): 
     
     test_camera(src=1)
 + Now run the following commands to test the object finder. You may need to adjust the`T_bw` and `T_p` parameters until the red blobs look like they're in the right place. `T_bw` is a value in the range 0-255, while `T_p` is the pixel proximity threshold between two objects. The value you need will depend on your camera resolution and the closeness of the objects.
 
-    img, arr = trigger_capture(src=1, T_bw=60, T_p=30)
-    visualise_objects(img, arr)
+        img, arr = trigger_capture(src=1, T_bw=60, T_p=30)
+        visualise_objects(img, arr)
 
 ## Using it like an API
 
@@ -52,4 +52,4 @@ Remember you can develop your p5 sketches anywhere in your local file system. Th
 
 ## Stuck?
 
-Any problems running this code, please feel free to post a comment (but be constructive - this is meant to be fun!)
+Any problems running this code, feel free to post a comment (but please be constructive - this is meant to be fun!)
