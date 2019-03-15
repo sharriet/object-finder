@@ -1,6 +1,7 @@
 # Object finding in Python with p5.js
 
 A simple object finder implemented as an insecure API for interfacing with p5.js. 
+
 The point of it? To spot objects in the real world and use the location data to make stuff happen on a p5 canvas!
 
 You'll find both the python API bit and an example p5 sketch that uses it this repo.
@@ -9,10 +10,10 @@ The server.py script could be useful for other projects as it serves CGI scripts
 
 ## Installation
 
-+ Clone the repo
-+ Activate the virtual environment:
++ Clone the repo inside a Python 3 virtual environment (virtualenv)
++ Use pip to install packages listed in `requirements.txt`:
 
-        source bin/activate
+        pip install -r requirements.txt
 
 ## Setup with live camera feed
 
@@ -41,6 +42,8 @@ Then, from the project root, start the simple CGI/CORS-enabled server:
 
     python server.py
 Test it by making a GET request to `http://localhost:8000/cgi-bin/call_object_finder.py` from a browser.
+
+Alternatively you can test the object finder without connecting a camera feed by editing `call_object_finder.py` so that it loads the test image (also explained in the comments).
 
 For (hopefully) obvious reasons, the object-finder API is only meant to be served locally. While the server script may be used for other things, it should never be used in production as it isn't secure.
 
