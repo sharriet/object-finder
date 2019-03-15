@@ -27,7 +27,7 @@ The server.py script could be useful for other projects as it serves CGI scripts
         from object_finder import *    
 + Run the following command to check the camera is lined up with the canvas (`q` closes the window): 
     
-    test_camera(src=1)
+        test_camera(src=1)
 + Now run the following commands to test the object finder. You may need to adjust the`T_bw` and `T_p` parameters until the red blobs look like they're in the right place. `T_bw` is a value in the range 0-255, while `T_p` is the pixel proximity threshold between two objects. The value you need will depend on your camera resolution and the closeness of the objects.
 
         img, arr = trigger_capture(src=1, T_bw=60, T_p=30)
@@ -35,12 +35,14 @@ The server.py script could be useful for other projects as it serves CGI scripts
 
 ## Using it like an API
 
-To make the `object_finder` script behave like an API, first adjust the parameters in `call_object_finder.py` to reflect your setup (obviously this is only meant to be served locally!)
+To make the `object_finder` script behave like an API, first adjust the parameters in `call_object_finder.py` to reflect your setup.
 
 Then, from the project root, start the simple CGI/CORS-enabled server:
 
     python server.py
 Test it by making a GET request to `http://localhost:8000/cgi-bin/call_object_finder.py` from a browser.
+
+For (hopefully) obvious reasons, the object-finder API is only meant to be served locally. While the server script may be used for other things, it should never be used in production as it isn't secure.
 
 ## Calling the API from p5
 
