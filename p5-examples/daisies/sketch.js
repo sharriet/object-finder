@@ -1,10 +1,10 @@
 /*	Demonstration of p5 sketch which uses object location data obtained
- *  by the object_finder.py script implemented as a rudimentary API.
- *  This particular example plots flowers (my 3 year old liked it when
- *  we used real beans to plant virtual flowers!) but of course the 
- *  plotting functions can be replaced with your own.
- *  See project documentation for help getting the API running.
- *  */
+ *	by the object_finder.py script implemented as a rudimentary API.
+ *	This particular example plots flowers (my 3 year old liked it when
+ *	we used real beans to plant virtual flowers!) but of course the 
+ *	plotting functions can be replaced with your own.
+ *	See project documentation for help getting the API running.
+ *	*/
 
 var timer = 0;
 var data;
@@ -39,7 +39,7 @@ function draw() {
 	// wait 20 seconds between captures
 	if (millis() - timer >= 5000) {
 		//data = loadJSON('http://localhost:8000/json/test.json', callback);
-		data = loadJSON('http://localhost:8000/json/call_object_finder.py', callback);
+		data = loadJSON('http://localhost:8000/cgi-bin/call_object_finder.py', callback);
 		timer = millis();
 	}
 }
@@ -67,10 +67,10 @@ function mapCoords(V) {
 }
 
 function plotNodes() {
-  	/* Plots the nodes of the graph at the x,y coordinates
-   	* specified in the list of vertices, V
-   	* param V: Array of vertices
-   	**/
+	/* Plots the nodes of the graph at the x,y coordinates
+	* specified in the list of vertices, V
+	* param V: Array of vertices
+	**/
 	for (var i=0; i<V.length; i++) {
 		noStroke();
 		fill(250, 203, 0);
@@ -79,9 +79,9 @@ function plotNodes() {
 }
 
 function plotStems() {
-  	/*	Plots the stems of the daisies
-   	*	param V: Array of vertices
-   	**/
+	/*	Plots the stems of the daisies
+	*	param V: Array of vertices
+	**/
 	for (var i=0; i<V.length; i++) {
 		stroke(178, 182, 1);
 		line(V[i][0], height, V[i][0], V[i][1]);
@@ -90,18 +90,18 @@ function plotStems() {
 
 function plotFlowers() {
 	/* Draw some pretty daisies
- 	* */
+	* */
 	strokeWeight(4);
-  	stroke(255);
-  	fill(200);
-  	for (var i=0; i<V.length; i++) {
-    	var coords = calcMaurer(V[i]);
-    	beginShape();
+	stroke(255);
+	fill(200);
+	for (var i=0; i<V.length; i++) {
+		var coords = calcMaurer(V[i]);
+		beginShape();
 		for (var j=0; j<coords[0].length; j++) {
 			vertex(coords[0][j], coords[1][j]);
 		}
 		endShape(CLOSE);
-  	}  
+	}  
 }
 
 function calcMaurer(c, a=30, k=6, d=0.02) {
